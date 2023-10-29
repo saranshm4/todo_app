@@ -1,0 +1,7 @@
+{
+    "id": "task",
+    "onmouseenter": "task.classList.add('active')",
+    "onmouseleave": "task.classList.remove('active')",
+    "class": "list-group-item list-group-item-action ",
+    "aria-current": "true"
+}

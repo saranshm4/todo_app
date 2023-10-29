@@ -1,0 +1,43 @@
+/* title = prompt("Enter your Todo Title:")
+description = prompt("Enter your Todo description:")
+if(title){
+    localStorage.setItem(title, description) 
+}
+
+console.log(localStorage.getItem(title)) */
+
+x= 0
+const first_update=()=>{
+    let task_list = document.createElement("div")
+    local_title = localStorage.getItem("title"+x)
+    task_list.innerHTML= `<h5 class="mb-1 list-title-${x}">${local_title}</h5><small>3 days ago</small><p class="mb-1">Some placeholder content in a paragraph.</p><small>And some small print.</small>`
+    document.getElementById('task_group').appendChild(task_list)
+}
+const update_list=()=>{
+    list_title = document.body.getElementsByClassName('list-title-'+x)[0]
+    list_title.innerHTML = localStorage.getItem(("title"+x))
+}
+
+const getTodo = ()=>{
+    title= document.getElementById('title').value
+    description= document.getElementById('description').value
+    localStorage.setItem("title"+x, title) 
+    localStorage.setItem("description", description)
+    let task_list = document.createElement("div")
+    local_title = localStorage.getItem("title"+x)
+    task_list.innerHTML= `<h5 class="mb-1 list-title-${x}">${local_title}</h5><small>3 days ago</small><p class="mb-1">Some placeholder content in a paragraph.</p><small>And some small print.</small>`
+    document.getElementById('task_group').appendChild(task_list)
+    x++
+}
+
+let submit_btn = document.getElementById('submit_btn')
+submit_btn.addEventListener("click", getTodo)
+
+const clear_todo = ()=>{
+    localStorage.clear()
+}
+let clear_btn = document.getElementById('clear_btn')
+clear_btn.addEventListener("click", clear_todo)
+
+first_update()
+setInterval(update_list,1000)
